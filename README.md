@@ -79,9 +79,9 @@ Hash Algorithms
 
 Clearance will use a SHA1 hash algorithm by default.  To change it, configure it in the initializer...
 
-  Clearance.configure do |config|
-    config.encryptor = Clearance::Encryptors::Bcrypt
-  end
+    Clearance.configure do |config|
+      config.encryptor = Clearance::Encryptors::Bcrypt
+    end
 
 Currently supposed algorithms are:
 
