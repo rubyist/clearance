@@ -1,9 +1,11 @@
 module Clearance
   class Configuration
     attr_accessor :mailer_sender
-
+    attr_accessor :encryptor
+    
     def initialize
       @mailer_sender = 'donotreply@example.com'
+      @encryptor = Clearance::Encryptors::SHA1
     end
   end
 
