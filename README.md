@@ -74,6 +74,20 @@ See lib/clearance/routes.rb for all the routes Clearance provides.
 Actions that redirect (create, update, and destroy) in Clearance controllers
 can be overriden by re-defining url_after_(action) methods as seen above.
 
+Hash Algorithms
+---------------
+
+Clearance will use a SHA1 hash algorithm by default.  To change it, configure it in the initializer...
+
+  Clearance.configure do |config|
+    config.encryptor = Clearance::Encryptors::Bcrypt
+  end
+
+Currently supposed algorithms are:
+
+* SHA1   Clearance::Encryptors::SHA1
+* BCrypt Clearance::Encryptors::Bcrypt
+
 Optional Cucumber features
 --------------------------
 
