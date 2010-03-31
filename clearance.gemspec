@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Dan Croak", "Mike Burns", "Jason Morrison", "Joe Ferris", "Eugene Bolshakov", "Nick Quaranto", "Josh Nichols", "Mike Breen", "Marcel G\303\266rner", "Bence Nagy", "Ben Mabey", "Eloy Duran", "Tim Pope", "Mihai Anca", "Mark Cornick", "Shay Arnett", "Jon Yurek", "Chad Pytel"]
-  s.date = %q{2010-02-25}
+  s.date = %q{2010-03-31}
   s.description = %q{Rails authentication with email & password.}
   s.email = %q{support@thoughtbot.com}
   s.extra_rdoc_files = [
@@ -62,6 +62,8 @@ Gem::Specification.new do |s|
      "lib/clearance.rb",
      "lib/clearance/authentication.rb",
      "lib/clearance/configuration.rb",
+     "lib/clearance/encryptors/bcrypt.rb",
+     "lib/clearance/encryptors/sha1.rb",
      "lib/clearance/extensions/errors.rb",
      "lib/clearance/extensions/rescue.rb",
      "lib/clearance/routes.rb",
@@ -98,9 +100,8 @@ Gem::Specification.new do |s|
      "test/rails_root/config/initializers/requires.rb",
      "test/rails_root/config/initializers/time_formats.rb",
      "test/rails_root/config/routes.rb",
-     "test/rails_root/db/migrate/20100225210436_clearance_create_users.rb",
+     "test/rails_root/db/migrate/20100331154858_clearance_create_users.rb",
      "test/rails_root/features/step_definitions/clearance_steps.rb",
-     "test/rails_root/features/step_definitions/factory_girl_steps.rb",
      "test/rails_root/features/step_definitions/web_steps.rb",
      "test/rails_root/features/support/env.rb",
      "test/rails_root/features/support/paths.rb",
