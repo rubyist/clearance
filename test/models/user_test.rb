@@ -39,14 +39,14 @@ class UserTest < ActiveSupport::TestCase
 
     context "encrypt password" do
       setup do
-        @salt = "salt"
+        @salt = Clearance.configuration.encryptor.salt('salt')
         @user = Factory.build(:user, :salt => @salt)
         def @user.initialize_salt; end
         @user.save!
         @password = @user.password
 
         @user.send(:encrypt, @password)
-        @expected = Digest::SHA1.hexdigest("--#{@salt}--#{@password}--")
+        @expected = Clearance.configuration.encryptor.digest(@password, @salt) #Digest::SHA1.hexdigest("--#{@salt}--#{@password}--")
       end
 
       should "create an encrypted password using SHA1 encryption" do

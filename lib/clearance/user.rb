@@ -1,4 +1,4 @@
-require 'digest/sha1'
+# -*- coding: utf-8 -*-
 
 module Clearance
   module User
@@ -138,13 +138,9 @@ module Clearance
 
       protected
 
-      def generate_hash(string)
-        Digest::SHA1.hexdigest(string)
-      end
-
       def initialize_salt
         if new_record?
-          self.salt = generate_hash("--#{Time.now.utc}--#{password}--#{rand}--")
+          self.salt = Clearance.configuration.encryptor.salt("--#{Time.now.utc}--#{password}--#{rand}--")
         end
       end
 
@@ -154,15 +150,15 @@ module Clearance
       end
 
       def encrypt(string)
-        generate_hash("--#{salt}--#{string}--")
+        Clearance.configuration.encryptor.digest(string, salt)
       end
 
       def generate_confirmation_token
-        self.confirmation_token = encrypt("--#{Time.now.utc}--#{password}--#{rand}--")
+        self.confirmation_token = Clearance::Encryptors::SHA1.digest("--#{Time.now.utc}--#{password}--#{rand}--")
       end
 
       def generate_remember_token
-        self.remember_token = encrypt("--#{Time.now.utc}--#{encrypted_password}--#{id}--#{rand}--")
+        self.remember_token = Clearance::Encryptors::SHA1.digest("--#{Time.now.utc}--#{encrypted_password}--#{id}--#{rand}--")
       end
 
       # Always false. Override to allow other forms of authentication
