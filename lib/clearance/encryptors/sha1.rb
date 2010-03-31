@@ -7,8 +7,8 @@ module Clearance
         digest(string)
       end
       
-      def self.digest(string)
-        Digest::SHA1.hexdigest(string)
+      def self.digest(string, salt='')
+        Digest::SHA1.hexdigest("--#{salt}--#{string}--")
       end
     end
   end

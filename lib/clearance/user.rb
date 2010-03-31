@@ -150,7 +150,7 @@ module Clearance
       end
 
       def encrypt(string)
-        Clearance.configuration.encryptor.digest("--#{salt}--#{string}--")
+        Clearance.configuration.encryptor.digest(string, salt)
       end
 
       def generate_confirmation_token
